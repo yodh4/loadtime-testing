@@ -516,7 +516,7 @@ function checkRegressions(summary, baseline) {
             urlResults.push({
                 url: targetUrl,
                 summary,
-                validRuns,
+                validRunCount: validRuns.length,
                 failedCount,
                 regressionCheck,
             });
@@ -527,16 +527,18 @@ function checkRegressions(summary, baseline) {
 
     const report = {
         timestamp: environment.timestamp,
-        runs: CONFIG.runs,
-        warmupRuns: CONFIG.warmupRuns,
         config: {
+            urls: CONFIG.urls,
+            runs: CONFIG.runs,
+            warmupRuns: CONFIG.warmupRuns,
             navigationTimeoutMs: CONFIG.navigationTimeout,
             postLoadWaitMs: CONFIG.postLoadWait,
             slowResourceThresholdMs: CONFIG.slowResourceThresholdMs,
             regressionThresholdPct: CONFIG.regressionThresholdPct,
             blockedDomains: CONFIG.blockedDomains,
+            viewport: CONFIG.viewport,
+            userAgent: CONFIG.userAgent,
         },
-        environment,
         urlResults,
     };
 
